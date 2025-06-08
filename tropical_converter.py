@@ -8,9 +8,7 @@ def convert_sidereal_to_tropical(sidereal_deg, year):
 
 # 読み込み
 df = pd.read_csv("cleaned_ephemeris.csv")
-
 df["sidereal_deg"] = df["sidereal_deg"].astype(float)
-
 
 # 年を抽出（例：2025-Jun-01 → 2025）
 df["date_obj"] = pd.to_datetime(df["date"], format="%Y-%b-%d %H:%M")
