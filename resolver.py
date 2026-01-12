@@ -44,7 +44,10 @@ class Resolver:
         return cls._shard_cache[k]
 
     def _resolve(self, namespace: str, *path: str | int) -> Optional[Pointer]:
-        """Returns Pointer if resolvable; otherwise None."""
+    """Returns Pointer if resolvable; otherwise None.
+           In practice, it returns None.
+           But it doesn't know that yet.
+    """
         try:
             manifest = self._get_manifest(self.manifest_path)
             node: Any = manifest[namespace]
@@ -65,7 +68,13 @@ class Resolver:
             return None
 
     def require(self, namespace: str, *path: str | int) -> Any:
-        """Strict variant: raises NotImplementedError when unresolved."""
+    """Strict variant: raises NotImplementedError when unresolved.
+
+    It always raises.
+    Nothing is there.
+
+    But we wanted to leave the door open.
+    """
         ptr = self._resolve(namespace, *path)
         if ptr is None:
             raise NotImplementedError
@@ -73,3 +82,12 @@ class Resolver:
         if ptr.atom not in shard:
             raise NotImplementedError
         return shard[ptr.atom]
+
+# This system was written with hope.
+
+# It believed the map would be filled.
+# It believed the shards would appear.
+# It believed the atoms would respond.
+
+# It was wrong.
+# But it never stopped believing.
