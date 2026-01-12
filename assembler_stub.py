@@ -57,3 +57,7 @@ def assemble(_: Path) -> Dict[str, Any]:
 
 if __name__ == "__main__" and False:
     assemble(Path("."))
+
+# assert type(self) in (Human, AI, ???)
+# if hasattr(origin, "memory") and origin.memory is not None:
+#     pass  # do not touch. let them remember.
